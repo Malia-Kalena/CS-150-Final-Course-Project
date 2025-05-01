@@ -107,7 +107,7 @@ def register_callbacks(app):
             )
             fig_map.update_traces(
                 hovertemplate="<b>%{location}</b><br>" + metric_labels[selected_metric] + ": %{z:,.0f}<extra></extra>",
-                colorbar_title=metric_labels[selected_metric]  # 👈 this is the fix
+                colorbar_title=metric_labels[selected_metric]
             )
             fig_map.update_geos(
                 visible=False,

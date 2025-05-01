@@ -5,7 +5,7 @@ import callbacks
 
 # Load data
 df = pd.read_csv("data/typhoon_effects_clean.csv")
-# Create dropdown options sorted by year (earliest first), with year in label
+# sorted by earliest year first
 typhoon_options = (
     df[['Typhoon', 'Year']]
     .dropna()
@@ -57,9 +57,9 @@ app.layout = dbc.Container([
         }
     ),
 
-    # Inputs and Map in Row Layout
+    # Inputs and Map
     dbc.Row([
-        # Left column: dropdown + radio buttons + context
+        # Dropdown, radio buttons, context
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
@@ -102,17 +102,17 @@ app.layout = dbc.Container([
                     html.Div(id="typhoon-context", style={
                         "color": "gray",
                         "height": "100%",
-                        "overflowY": "auto"  # adds scroll if content exceeds space
+                        "overflowY": "auto"
                     })
                 ])
-            ], style={"height": "370px"}), # adjust based on remaining height
+            ], style={"height": "370px"}),
         ]),
 
             # Right column: Map
         dbc.Col([
             dcc.Graph(
                 id="choropleth-map",
-                style={"height": "700px", "marginTop": "40px", "marginLeft": "-20px"}  # adjusted margin to align better
+                style={"height": "700px", "marginTop": "40px", "marginLeft": "-20px"}
             )
         ], width=9)
     ], className="mb-4"),
